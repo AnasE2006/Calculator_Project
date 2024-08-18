@@ -11,6 +11,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 == 0) {
+        return NaN
+    }
     return num1 / num2;
 }
 
@@ -47,7 +50,7 @@ let clearButton = document.getElementById("clear");
 
 digitButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        if (firstNumber) {
+        if (firstNumber && input1.length < 14) {
             if (displayScreen.innerHTML == "0") {
                 displayScreen.innerHTML = button.innerHTML;    
             }
@@ -57,18 +60,29 @@ digitButtons.forEach((button) => {
             input1 += button.innerHTML;  
         }
         else {
-            if (operatorPressed) {
-                displayScreen.innerHTML = "";
-                operatorPressed = false;
+            if (!firstNumber && input2.length < 14) {
+                if (operatorPressed) {
+                    displayScreen.innerHTML = "";
+                    operatorPressed = false;
+                }
+                displayScreen.innerHTML += button.innerHTML;   
+                input2 += button.innerHTML;   
             }
-            displayScreen.innerHTML += button.innerHTML;   
-            input2 += button.innerHTML;   
         }
     });
 });
 
 operatorButtons.forEach((button) => {
     button.addEventListener("click", () => {
+        if (input2 != "") {
+            let value = operate(parseFloat(input1),parseFloat(input2),operation);
+            if (value.length > 14) {
+                value = "NaN"
+            }
+            displayScreen.innerHTML = value;
+            input1 = value;
+            input2 = "";   
+        }
         operatorPressed = true;
         operation = button.innerHTML;
         firstNumber = false;
@@ -77,6 +91,9 @@ operatorButtons.forEach((button) => {
 
 equalButton.addEventListener("click", () => {
     let value = operate(parseFloat(input1),parseFloat(input2),operation);
+    if (value.length > 14) {
+        value = "NaN"
+    }
     displayScreen.innerHTML = value;
     input1 = value;
     input2 = "";
