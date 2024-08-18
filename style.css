@@ -26,7 +26,21 @@ body {
     height: 120px;
     margin-top: 40px;
     border-radius: 4px;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
+
+#number-display {
+    color:rgb(125, 192, 126);
+    font-size: 45px;
+    margin-right: 20px;
+    margin-bottom: 12px;
+}
+
+
 
 .digit-buttons {
     display: grid;
