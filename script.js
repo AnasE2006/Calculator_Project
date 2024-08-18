@@ -33,16 +33,40 @@ function operate(num1, num2, operator) {
     }
 }
 
-let input1 = NaN;
-let input2 = NaN;
-let operation = NaN;
+let input1 = "";
+let input2 = "";
+let operation = "";
+let firstNumber = true;
 
 let digitButtons = document.querySelectorAll(".btn.digit");
+let operatorButtons = document.querySelectorAll(".btn.operator")
 let displayScreen = document.getElementById("number-display");
+let equalButton = document.getElementById("equal");
 
 digitButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        displayScreen.innerHTML += button.innerHTML;      
-    })
-    
+        if (firstNumber) {
+            displayScreen.innerHTML += button.innerHTML;   
+            input1 += button.innerHTML;   
+        }
+        else {
+            displayScreen.innerHTML += button.innerHTML;   
+            input2 += button.innerHTML;   
+        }
+    });
 });
+
+operatorButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        displayScreen.innerHTML = "";
+        operation = button.innerHTML;
+        firstNumber = false;
+    })
+})
+
+equalButton.addEventListener("click", () => {
+    let value = operate(parseFloat(input1),parseFloat(input2),operation);
+    displayScreen.innerHTML = value;
+    input1 = value;
+    input2 = "";
+})
