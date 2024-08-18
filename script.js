@@ -18,10 +18,6 @@ function modulo(num1, num2) {
     return num1 % num2;
 }
 
-let input1 = NaN;
-let input2 = NaN;
-let operation = NaN;
-
 function operate(num1, num2, operator) {
     switch (operator) {
         case "+":
@@ -36,3 +32,17 @@ function operate(num1, num2, operator) {
             return modulo(num1,num2);
     }
 }
+
+let input1 = NaN;
+let input2 = NaN;
+let operation = NaN;
+
+let digitButtons = document.querySelectorAll(".btn.digit");
+let displayScreen = document.getElementById("number-display");
+
+digitButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        displayScreen.innerHTML += button.innerHTML;      
+    })
+    
+});
