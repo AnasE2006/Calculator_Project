@@ -37,19 +37,30 @@ let input1 = "";
 let input2 = "";
 let operation = "";
 let firstNumber = true;
+let operatorPressed = false;
 
 let digitButtons = document.querySelectorAll(".btn.digit");
 let operatorButtons = document.querySelectorAll(".btn.operator")
 let displayScreen = document.getElementById("number-display");
 let equalButton = document.getElementById("equal");
+let clearButton = document.getElementById("clear");
 
 digitButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (firstNumber) {
-            displayScreen.innerHTML += button.innerHTML;   
-            input1 += button.innerHTML;   
+            if (displayScreen.innerHTML == "0") {
+                displayScreen.innerHTML = button.innerHTML;    
+            }
+            else {
+                displayScreen.innerHTML += button.innerHTML;   
+            }
+            input1 += button.innerHTML;  
         }
         else {
+            if (operatorPressed) {
+                displayScreen.innerHTML = "";
+                operatorPressed = false;
+            }
             displayScreen.innerHTML += button.innerHTML;   
             input2 += button.innerHTML;   
         }
@@ -58,7 +69,7 @@ digitButtons.forEach((button) => {
 
 operatorButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        displayScreen.innerHTML = "";
+        operatorPressed = true;
         operation = button.innerHTML;
         firstNumber = false;
     })
@@ -69,4 +80,11 @@ equalButton.addEventListener("click", () => {
     displayScreen.innerHTML = value;
     input1 = value;
     input2 = "";
+})
+
+clearButton.addEventListener("click", () => {
+    displayScreen.innerHTML = "0";
+    input1 = "";
+    input2 = "";
+    firstNumber = true;
 })
