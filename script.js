@@ -12,7 +12,7 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     if (num2 == 0) {
-        return NaN
+        return NaN;
     }
     return num1 / num2;
 }
@@ -78,7 +78,7 @@ negateButton.addEventListener("click", () => {
 
 digitButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        if (firstNumber && input1.length < 14) {
+        if (firstNumber) {
             if (displayScreen.innerHTML == "0") {
                 displayScreen.innerHTML = button.innerHTML;    
             }
@@ -88,7 +88,7 @@ digitButtons.forEach((button) => {
             input1 += button.innerHTML; 
         }
         else {
-            if (!firstNumber && input2.length < 14) {
+            if (!firstNumber) {
                 if (operatorPressed) {
                     displayScreen.innerHTML = "";
                     operatorPressed = false;
@@ -104,9 +104,6 @@ operatorButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (input2 != "") {
             let value = operate(parseFloat(input1),parseFloat(input2),operation);
-            if (value.length > 14) {
-                value = "NaN"
-            }
             displayScreen.innerHTML = value;
             input1 = value;
             input2 = "";   
@@ -119,9 +116,6 @@ operatorButtons.forEach((button) => {
 
 equalButton.addEventListener("click", () => {
     let value = operate(parseFloat(input1),parseFloat(input2),operation);
-    if (value.length > 14) {
-        value = "NaN"
-    }
     displayScreen.innerHTML = value;
     input1 = value;
     input2 = "";
