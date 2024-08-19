@@ -55,3 +55,9 @@ body {
     width: 75px;
     height: 75px;
 }
+
+.btn#equal {
+    width: 170px;
+    margin-top: 330px;
+    margin-left: 190px;
+}

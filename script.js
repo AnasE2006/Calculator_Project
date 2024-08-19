@@ -47,6 +47,34 @@ let operatorButtons = document.querySelectorAll(".btn.operator")
 let displayScreen = document.getElementById("number-display");
 let equalButton = document.getElementById("equal");
 let clearButton = document.getElementById("clear");
+let negateButton = document.getElementById("negate");
+
+negateButton.addEventListener("click", () => {
+    if (displayScreen.innerHTML != "0") {
+        if (input1 == displayScreen.innerHTML) {
+            if (displayScreen.innerHTML.charAt(0) == "-") {
+                console.log(input1);
+                let temp = input1.toString().replace("-","");
+                input1 = temp;
+                displayScreen.innerHTML = displayScreen.innerHTML.replace("-","");
+            }
+            else {
+                input1 = "-" + input1;
+                displayScreen.innerHTML = "-" + displayScreen.innerHTML;
+            }
+        }
+        else {
+            if (displayScreen.innerHTML.charAt(0) == "-") {
+                input2 = input2.toString().replace("-","");
+                displayScreen.innerHTML = displayScreen.innerHTML.replace("-","");
+            }
+            else {
+                input2 = "-" + input2;
+                displayScreen.innerHTML = "-" + displayScreen.innerHTML;
+            }
+        }
+    }
+});
 
 digitButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -56,8 +84,8 @@ digitButtons.forEach((button) => {
             }
             else {
                 displayScreen.innerHTML += button.innerHTML;   
-            }
-            input1 += button.innerHTML;  
+            } 
+            input1 += button.innerHTML; 
         }
         else {
             if (!firstNumber && input2.length < 14) {
