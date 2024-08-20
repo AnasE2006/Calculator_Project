@@ -8,6 +8,6 @@ An on-screen digital calculator built using HTML, CSS, and JavaScript that is su
 - The ability to customize the UI aesthetics by changing the background, calculator, button, and output colors.
 
 
-A demo of the project can be accessed [here](https://anase2006.github.io/Calculator_Project/)
+A demo of the project can be accessed [here](https://anase2006.github.io/Calculator_Project/).
 
 
