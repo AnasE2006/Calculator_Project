@@ -55,6 +55,22 @@ let outColorButton = document.getElementById("outColor");
 let btnColorButton = document.getElementById("btnColor");
 let bgrndColorButton = document.getElementById("bgrndColor");
 let buttons = document.querySelectorAll(".btn");
+let decimalBtn = document.getElementById(".")
+
+decimalBtn.addEventListener("click", () => {
+        if (input1 == displayScreen.innerHTML) {
+            if (!displayScreen.innerHTML.includes(".")) {
+                input1 = input1 + ".";
+                displayScreen.innerHTML = input1;
+            }
+        }
+        else {
+            if (!displayScreen.innerHTML.includes(".")) {
+                input2 = input2 + ".";
+                displayScreen.innerHTML = input2;
+            }
+        }
+});
 
 bgrndColorButton.addEventListener("input", () => {
     document.querySelector("body").style.backgroundColor = bgrndColorButton.value;
