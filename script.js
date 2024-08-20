@@ -94,7 +94,6 @@ negateButton.addEventListener("click", () => {
     if (displayScreen.innerHTML != "0") {
         if (input1 == displayScreen.innerHTML) {
             if (displayScreen.innerHTML.charAt(0) == "-") {
-                console.log(input1);
                 let temp = input1.toString().replace("-","");
                 input1 = temp;
                 displayScreen.innerHTML = displayScreen.innerHTML.replace("-","");
