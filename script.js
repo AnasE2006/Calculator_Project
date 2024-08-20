@@ -42,12 +42,37 @@ let operation = "";
 let firstNumber = true;
 let operatorPressed = false;
 
+let calculator = document.getElementById("calc");
+let numDisplay = document.getElementById("number-display");
 let digitButtons = document.querySelectorAll(".btn.digit");
 let operatorButtons = document.querySelectorAll(".btn.operator")
 let displayScreen = document.getElementById("number-display");
 let equalButton = document.getElementById("equal");
 let clearButton = document.getElementById("clear");
 let negateButton = document.getElementById("negate");
+let calcColorButton = document.getElementById("calcColor");
+let outColorButton = document.getElementById("outColor");
+let btnColorButton = document.getElementById("btnColor");
+let bgrndColorButton = document.getElementById("bgrndColor");
+let buttons = document.querySelectorAll(".btn");
+
+bgrndColorButton.addEventListener("input", () => {
+    document.querySelector("body").style.backgroundColor = bgrndColorButton.value;
+});
+
+calcColorButton.addEventListener("input", () => {
+    calculator.style.backgroundColor = calcColorButton.value;
+});
+
+outColorButton.addEventListener("input", () => {
+    numDisplay.style.color = outColorButton.value;
+});
+
+btnColorButton.addEventListener("input", () => {
+    buttons.forEach((btn) => {
+        btn.style.backgroundColor = btnColorButton.value; 
+    })
+});
 
 negateButton.addEventListener("click", () => {
     if (displayScreen.innerHTML != "0") {
